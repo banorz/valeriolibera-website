@@ -1,29 +1,107 @@
 ---
-layout: default
+layout: home
+title: pages.home
 ---
+
 <div class="flow-diagram center-content">
   <div class="flow-level">
-    <h1>Valerio Libera</h1>
+    <div class="align-center" id="main-logo" onclick="toggleMenu();"><img class="logo-image" src="{{ "/assets/images/logo.png" | prepend: site.baseurl_root }}"></div>
     <div class="vertical-line"></div>
-    <div class="flow-level">
-      <ul>
-        <li>
-          <div class="vertical-line"></div>
-          <h2>About</h2>
-        </li>
-        <li>
-          <div class="vertical-line"></div>
-          <h2>Works</h2>
-        </li>
-        <li>
-          <div class="vertical-line"></div>
-          <h2>Music</h2>
-        </li>
-        <li>
-          <div class="vertical-line"></div>
-          <h2>Contacts</h2>
-        </li>
-      </ul>
+    <div id="dummy-menu"></div>
+    <div id="main-menu">
+      <div id="home-info"><span class="terminal-blink">{% t home.description %}</span></div>
+      <div class="vertical-line" id="home-vertical-pre-menu"></div>
+      <div class="flow-level">
+        <ul class="with-horizontal-line">
+          <li>
+            <div class="vertical-line"></div>
+            <h2 id="menu-info" class="menu-h2" onclick="animateAndGoToSection(document.getElementById('menu-info'))">{% t pages.info %}</h2>
+          </li><li>
+            <div class="vertical-line"></div>
+            <h2 id="menu-works" class="menu-h2" onclick="animateAndGoToSection(document.getElementById('menu-works'))">{% t pages.work %}</h2>
+          </li><li>
+            <div class="vertical-line"></div>
+            <h2 id="menu-blog" class="menu-h2" onclick="animateAndGoToSection(document.getElementById('menu-blog'))">{% t pages.blog %}</h2>
+          </li><li>
+            <div class="vertical-line"></div>
+            <h2 id="menu-contacts" class="menu-h2" onclick="animateAndGoToSection(document.getElementById('menu-contacts'))">{% t pages.contact %}</h2>
+          </li>
+        </ul>
+      </div>
+
     </div>
-  </div>
 </div>
+</div>
+<script>
+  initParticles(null)
+  corrupt_checkProbability(function(){
+    initParticles(currentCorruptionProbability)
+  })
+  var isShown = false;
+  function toggleMenu(){
+    var dummy = document.getElementById("dummy-menu");
+    var menu = document.getElementById("main-menu");
+    if(isShown){
+      dummy.style.display="block";
+      menu.style.height = "0px";
+      isShown=false;
+      localStorage.removeItem("isShown");
+
+    }
+    else{
+      dummy.style.display="none";
+      menu.style.height = "100%";
+      isShown=true;
+      localStorage.setItem("isShown",true);
+    }
+
+  }
+  if(localStorage.getItem("isShown")){
+    toggleMenu();
+  }
+  function animateAndGoToSection(sectionObj){
+    if(sectionObj.id=="menu-blog"){
+      window.open("https://blog.valeriolibera.it","_blank");
+      return;
+    }
+    /*var rect = sectionObj.getBoundingClientRect();
+    var win = sectionObj.ownerDocument.defaultView;
+    var top =  rect.top + win.pageYOffset;
+    var left = rect.left + win.pageXOffset;
+    var menu = document.getElementById("main-menu");
+    menu.style.overflow="visible";
+    sectionObj.parentNode.removeChild(sectionObj);
+    document.getElementById("main-home").appendChild(sectionObj);
+    sectionObj.style.position = "absolute";
+    sectionObj.style.top = top+"px";
+    sectionObj.style.left = left+"px";
+    sectionObj.className = "menu-item-animate";
+
+    var items = $('.flow-diagram *').not($('#'+sectionObj.id));
+    for(var i=0;i<items.length;i++){
+      var item = items[i];
+      item.classList.add("item-disappear");
+    }
+    sectionObj.addEventListener('animationend', () => {
+      goToSection(sectionObj.id)
+    });*/
+    document.getElementById("main-home").addEventListener('animationend', () => {
+      goToSection(sectionObj.id)
+    });
+    document.getElementById("main-home").classList.add("item-disappear")
+  }
+  function goToSection(id){
+    switch(id){
+      case "menu-info":
+        window.open("info","_self");
+        break;
+      case "menu-works":
+        window.open("work","_self");
+        break;
+      case "menu-contacts":
+        window.open("contact","_self");
+        break;
+    }
+  }
+
+</script>

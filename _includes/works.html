@@ -1,0 +1,19 @@
+<div class="center-content">
+
+
+
+  <ul class="works-ul center-content">
+    {% assign ordered_works = site.works | sort:"order_number" %}
+    {% for work in ordered_works %}
+        {% capture picture %}{{work.slug}}.png{% endcapture %}
+          <li>
+            <span style="font-weight:400">{% t work.name %}</span>
+            <a href="{{ work.link }}" target="_blank"><img src="{{ '/assets/images/works/' | prepend: site.baseurl_root | append: picture }}"></img></a>
+            <span  style="font-weight:300">{% t work.description %}</span>
+
+
+          </li>
+    {% endfor %}
+  </ul>
+
+</div>

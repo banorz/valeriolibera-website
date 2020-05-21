@@ -13,15 +13,16 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Valerio Libera
+title: Valerio Libera Software Engineer
 email: info@valeriolibera.it
 description: >- # this means to ignore newlines until "baseurl:"
-  Computer Engineer, Software Developer, App & Full Stack Web Developer, Software Analyst
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://www.valeriolibera.it/" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_pagename: SoulFilm
-facebook_pagename: SoulFilmProduction
-instagram_pagename: soulfilmproduction
+  Computer Engineer, Software Developer, App & Full Stack Web Developer, Software Analyst, App Development
+
+url: "https://www.valeriolibera.it" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_pagename: banorz1
+facebook_pagename: ban23
+linkedin_pagename: valerio-libera
+github_pagename: banorz
 
 collections:
   works:
@@ -30,6 +31,13 @@ collections:
 markdown: kramdown
 # plugins:
 #   - jekyll-feed
+plugins:
+  - jekyll-multiple-languages-plugin
+  - jekyll-minifier
+  - jekyll-sitemap
+jekyll-minifier:
+  uglifier_args:
+    harmony: true
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
@@ -42,3 +50,5 @@ markdown: kramdown
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+languages: ["en","it"]
+exclude_from_localizations: ["assets","css"]

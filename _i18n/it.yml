@@ -1,0 +1,48 @@
+global:
+  title: Valerio Libera - Sviluppatore Software
+  workinprogress: lavori in corso.
+  description: Ingegnere Informatico, Sviluppatore Software, Sviluppatore Web Full Stack, Analista Software, Sviluppatore App
+  keywords: HTML,CSS,PHP,Full-Stack,Software,App,JavaScript,Ingegnere,Sviluppatore,Mobile
+pages:
+  home: home
+  info: info
+  work: lavoro
+  blog: blog
+  contact: contatto
+  counter: voi
+home:
+  description: sviluppatore software dal 2011<br>ingegnere informatico dal 2016
+info:
+  aboutme: Ho ottenuto la laurea in Ingegneria Informatica nel 2016, ma lavoro in campo informatico da sempre. Fino ai 20 anni ho avuto esperienze da sistemista e tecnico, in seguito mi sono mosso verso lo sviluppo di software e l'analisi di architetture sempre più complesse. Attualmente lavoro come libero professionista.
+  network: Gli esseri umani sentono il bisogno di unirsi e di formare una rete, la ragione è che quando si è in gruppo le sfide della vita sono più semplici da superare. Nel campo della tecnologia questo è ancora più vero, poichè le sfide diventano giorno dopo giorno sempre più complesse Credo nel valore della comunicazione e nella necessità di formare una rete di professionalità anche molto diverse tra loro. Una rete che permetta di realizzare progetti in tempo minore, con costi più sostenibili e con un'umanità maggiore.
+  cv: link cv
+contact:
+  dm: inviami un messaggio diretto
+  email: inviami una e-mail
+  other: o contattami qua
+  send: invia
+  message: messaggio
+  shortmessage: inserisci il tuo messaggio breve
+  emailmessage: scrivi la tua e-mail
+  disabled: disabilitato
+  footer: --- Sede legale<br>Valerio Libera<br>Via S.Tommaso d'Aquino, 7 00136 Roma<br>Partita IVA - 15188751000<br>
+  yourname: -- your name
+  yourmail: -- your e-mail
+  yournumber: -- your number
+work:
+  knowledge: conoscenze
+  specialized: specializzato
+  cv: altri nel
+works:
+  name_egy: Antico Egitto 3D
+  description_egy: App per dispositivi Android e Windows che permette di esplorare i contenuti di Altair 4 Multimedia riguardanti l'Antico Egitto. L'app è stata sviluppata in ambiente nativo e ha un focus sull'interattività multimediale.
+  name_kids: Happy Kids Games
+  description_kids: Esperienza come sviluppatore per framework Corona SDK, realizzazione di un gioco educativo 2D per piattaforme Android/iOS
+  name_soul: Sito Statico realizzato con Jekyll
+  description_soul: Programmato il sito di Soul Film Production utilizzando HTML/CSS/JS in ambiente Jekyll. Grafica e layout sono stati realizzati da Daniele Moscioni.
+  name_cordo: Manutenzione app Cordova
+  description_cordo: Manutenzione e sviluppo di nuove feature per App realizzate da StepApp con tecnologia Cordova. Le app sono state create per un cliente che lavora in ambito medico.
+  name_mela:  Full Stack Web Developer e Mobile Lead Developer
+  description_mela: Manutenzione e sviluppo di nuove feature per plugin Wordpress e App native per una società che si occupa di diete online.
+  name_pano: Sviluppatore tour virtuale con KRPano
+  description_pano: Sviluppato tour virtuale del duomo di Modena per Altair4

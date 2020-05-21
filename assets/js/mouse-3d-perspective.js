@@ -1,4 +1,4 @@
-var container = document.getElementById('main-div');
+var container = document.getElementById('main-home');
 var inner = document.getElementById('perspectivized');
 
 var onMouseEnterHandler = function(event) {
@@ -42,6 +42,9 @@ var mouse = {
 mouse.setOrigin(container);
 
 var update = function(event) {
+  if(window.devicePixelRatio>1.25){
+    return;
+  }
   mouse.updatePosition(event);
   updateTransformStyle(
     (mouse.y / inner.offsetHeight/2).toFixed(2),

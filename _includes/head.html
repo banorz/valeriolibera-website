@@ -1,13 +1,23 @@
 <head>
-  <title> {{site.title}} </title>
+  <title> {% t global.title %} </title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8;" />
-
-  <link rel="shortcut icon" type="image/png" href="/assets/images/icon.png">
+  <meta name="keywords" content="{% t global.keywords %}">
+  <meta name="description" content="{% t global.description %}">
+  <meta name="google-site-verification" content="JOii6fJV7s7NL0_OOAKQW023EqmueCWd73XcUvDCeUU" />
+  <META NAME="geo.position" CONTENT="41.874664; 12.523595">
+  <META NAME="geo.placename" CONTENT="Italy">
+  <META NAME="geo.region" CONTENT="ita">
+  <link rel="shortcut icon" type="image/png" href='{{ "/assets/images/icon.png" | prepend: site.baseurl_root }}'>
+  <meta name="og:title" property="og:title" content="{% t global.title %}">
+  <meta property="og:image" content="{{ "/assets/images/logo-white.png" | prepend: site.baseurl_root }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- javascript includes -->
-  <script src="/assets/js/modernizr-custom.js"></script>
-
+  <script src='{{ "/assets/js/modernizr-custom.js" | prepend: site.baseurl_root }}'></script>
+  <script src='{{ "/assets/js/jquery-3.3.1.min.js" | prepend: site.baseurl_root }}'></script>
+  <script src='{{ "/assets/js/counter.js" | prepend: site.baseurl_root }}'></script>
+  <script src='{{ "/assets/js/corruption.js" | prepend: site.baseurl_root }}'></script>
     <!-- css includes -->
-  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href='{{ "/css/main.css" | prepend: site.baseurl_root }}'>
 
 </head>

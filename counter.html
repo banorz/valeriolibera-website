@@ -1,0 +1,51 @@
+---
+layout: fullwidthdefault
+title: pages.counter
+permalink: /counter/
+---
+<br>
+<div id="counter">
+  <span class="corrupt-text" id="counter-span">
+    000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  </span>
+</div>
+<script>
+  function pad(num, size) {
+      var s = num+""
+      while (s.length < size) s = "0" + s
+      return s
+  }
+  var total
+  $(function() {
+    setNumber(0);
+    counterGetStats(function(response){
+      total = response.total
+      setNumber(total);
+
+    })
+  });
+  $( window ).resize(function() {
+    setNumber(total)
+  });
+  function setNumber(value){
+
+    document.getElementById('counter-span').innerHTML=pad(value,calculatePadValue());
+    document.getElementById('counter').scrollTop = document.getElementById('counter').scrollHeight;
+    corrupt_init();
+  }
+  function calculatePadValue(){
+
+    var divWidth = document.getElementById("counter").offsetWidth
+    var spanWidth = document.getElementById("counter-span").offsetWidth
+
+
+
+    var fontWidth = 24.00666666;
+    var realHeight =window.innerHeight-176
+    var numRows = Math.floor(realHeight/50.3)-1
+
+    return (((divWidth-(divWidth-spanWidth))/fontWidth)*numRows);
+  }
+
+</script>

@@ -1,11 +1,28 @@
 <footer class="footer">
   <div class="footer-container">
     <span>
-        <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img class="cc-img" alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
+
      </span>
     <span>
-      <a href="">Top</a>
-      <a href="">Contacts</a>
+
+      {% if site.lang == "en" %}
+        {% capture link_ita %}{{ site.baseurl_root }}/it{{ page.url}}{% endcapture %}
+        eng
+        <a href="{{ link_ita }}" >ita</a>
+      {% elsif site.lang == "it" %}
+        {% capture link_eng %}{{ site.baseurl_root }}{{ page.url  }}{% endcapture %}
+        <a href="{{ link_eng }}" >eng</a>
+        ita
+      {% endif %}
+      -
+      <a href='{{ site.baseurl }}/'>{% t pages.home %}</a>
+      <a href='{{ site.baseurl }}/counter'>{% t pages.counter %}</a>
+      <a href="{{ site.baseurl }}/contact">{% t pages.contact %}</a>
     </span>
   </div>
+  <script>
+    corrupt_checkProbability()
+    corrupt_init()
+  </script>
 </footer>

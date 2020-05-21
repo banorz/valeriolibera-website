@@ -1,0 +1,63 @@
+---
+layout: default
+title: pages.contact
+permalink: /contact/
+---
+<div>
+<script>
+  function send(){
+    var yourname = document.getElementById("name").value;
+    var yournum = document.getElementById("tel").value;
+    var yourmail = document.getElementById("mail").value;
+    var yourmessage = document.getElementById("body").value;
+    var subject = "INFO - "+yourmail;
+    var body = encodeURIComponent(yourmessage+"\n\n"+yourname+"\n"+yournum+"\n"+yourmail)
+    //Temporary, will be upgraded
+    window.open('mailto:info@valeriolibera.it?subject='+subject+'&body='+body);
+  }
+</script>
+<br>
+
+<div class="terminal-blink">{% t contact.email %}</div>
+<div class="contact-form">
+<input class="contact-field"  id="name"  placeholder="Mario Rossi" type="text"></input> <label for="name"> {% t contact.yourname %} </label><br>
+  <input class="contact-field" id="tel"  placeholder="+39 33333333" type="tel"></input><label for="tel"> {% t contact.yournumber %} </label><br>
+  <input class="contact-field"  id="mail" placeholder="mail@mail.com" type="email"></input><label for="mail"> {% t contact.yourmail %} </label><br>
+  <textarea id="body" rows="7" placeholder="{% t contact.emailmessage %}" ></textarea>
+</div>
+<button onclick="send()">{% t contact.send %}</button>
+<br><br>
+<div class="terminal-blink">{% t contact.other %}</div>
+<br>
+<div style="">
+  <div class="contact">
+    <img class="icon-contact" src='{{ "/assets/images/ic_phone.png" | prepend: site.baseurl_root }}'></img> <a href="tel:+393456024345">+39 3456024345</a><br>
+  </div>
+  <div class="contact">
+    <img class="icon-contact" src='{{ "/assets/images/ic_mail.png" | prepend: site.baseurl_root }}'></img> <a href="mailto:mail@valeriolibera.it">mail@valeriolibera.it</a><br>
+  </div>
+  <div class="contact">
+    <img class="icon-contact" src='{{ "/assets/images/ic_location.png" | prepend: site.baseurl_root }}'></img> <a href="https://goo.gl/maps/GSq4q6aMy69rGMCh8">Via Eurialo, 8 - 00181 - Roma</a>
+  </div>
+  <br>
+  <div class="social-contacts">
+    <span>
+      <a href="https://facebook.com/{{ site.facebook_pagename }}"> <img class="icon-social" src='{{ "/assets/images/facebook.png" | prepend: site.baseurl_root }}'></img> </a>
+      <a href="https://twitter.com/{{ site.twitter_pagename }}"> <img class="icon-social" src='{{ "/assets/images/twitter.png" | prepend: site.baseurl_root }}'></img> </a>
+      <a href="https://linkedin.com/in/{{ site.linkedin_pagename }}"> <img class="icon-social" src='{{ "/assets/images/linkedin.png" | prepend: site.baseurl_root }}'></img> </a>
+      <a href="https://github.com/{{ site.github_pagename }}"> <img class="icon-social" src='{{ "/assets/images/github.png" | prepend: site.baseurl_root }}'></img> </a>
+    </span>
+  </div>
+  <br>
+  <div class="terminal-blink">{% t contact.dm %}</div>
+  <input disabled placeholder="{% t contact.shortmessage %}" type="text"></input>
+  <br>
+  <button disabled >{% t contact.send %}</button>   {% t global.workinprogress %}
+  <br>
+</div>
+<br>
+
+
+<div class="contact-footer">
+{% t contact.footer %}
+</div>

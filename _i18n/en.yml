@@ -1,0 +1,48 @@
+global:
+  title: Valerio Libera - Software Engineer
+  workinprogress: work in progress.
+  description: Computer Engineer, Software Developer, Full Stack Web Developer, Software Analyst, App Development
+  keywords: HTML,CSS,PHP,Full-Stack,Software,App,JavaScript,Engineer,Developer,Mobile
+pages:
+  home: home
+  info: info
+  work: work
+  blog: blog
+  contact: contact
+  counter: you
+home:
+  description: software developer since 2011<br>computer engineer since 2016
+info:
+  aboutme: I got my degree in Computer Engineering in 2016, but I've always been working in the IT field. Up to the age of 20 I had experience as a systems engineer and technician, then I moved towards software development and the analysis of increasingly complex architectures. I currently work as a freelancer.
+  network: Human beings feel the need to unite and form a network, the reason is that when you are in a group the challenges of life are easier to overcome. In the field of technology this is even more true, as the challenges become more and more complex day after day. I believe in the value of communication and in the need to form a network of professionals that are also very different from each other. A network that allows you to carry out projects in less time, with more sustainable costs and with greater humanity.
+  cv: link cv
+contact:
+  dm: send me a direct message
+  email: send me an e-mail
+  other: other contacts
+  send: send
+  message: message
+  shortmessage: write your short message
+  emailmessage: write your email
+  disabled: disabled
+  footer: --- Legal address ---<br>Valerio Libera<br>Via S.Tommaso d'Aquino, 7 00136 Roma<br>VAT number - 15188751000<br>
+  yourname: -- your name
+  yourmail: -- your e-mail
+  yournumber: -- your number
+work:
+  knowledge: knowledge
+  specialized: specialized
+  cv: more in the
+works:
+  name_egy: Ancient Egypt 3D
+  description_egy: Developed Ancient Egypt 3D, an app for Android and Windows devices which permits to explore Altair 4 multimedia contents about Egypt. The app is developed in a native environment and is focused on multimedia interactions.<br>
+  name_kids: Happy Kids Games
+  description_kids: Experience as Corona SDK developer in making Educational 2D Game for Android/iOS platforms
+  name_soul: Static Website with Jekyll
+  description_soul: Coded Soul Film Production website as static website using HTML/CSS/JS in Jekyll environment. Graphics and Layout were made by Daniele Moscioni.
+  name_cordo: Cordova App Maintenance
+  description_cordo: Maintenance and development of new features for some apps made by StepApp. The apps were realized using Cordova Framework for a client in the medical field.
+  name_mela:  Full Stack Web Developer and Mobile Lead Developer
+  description_mela: Maintenance and development of new features for Wordpress Plugins and native Apps for a big online diet company.
+  name_pano: KRPano virtual tour developer
+  description_pano: Developed virtual tour of Duomo di Modena for Altair4 using KRPano Framework
