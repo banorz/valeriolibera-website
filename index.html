@@ -19,10 +19,11 @@ title: pages.home
           </li><li>
             <div class="vertical-line"></div>
             <h2 id="menu-works" class="menu-h2" onclick="animateAndGoToSection(document.getElementById('menu-works'))">{% t pages.work %}</h2>
-          </li><li>
+          </li><!--<li>
             <div class="vertical-line"></div>
             <h2 id="menu-blog" class="menu-h2" onclick="animateAndGoToSection(document.getElementById('menu-blog'))">{% t pages.blog %}</h2>
-          </li><li>
+          </li>-->
+          <li>
             <div class="vertical-line"></div>
             <h2 id="menu-contacts" class="menu-h2" onclick="animateAndGoToSection(document.getElementById('menu-contacts'))">{% t pages.contact %}</h2>
           </li>
@@ -56,9 +57,9 @@ title: pages.home
     }
 
   }
-  if(localStorage.getItem("isShown")){
+ // if(localStorage.getItem("isShown")){
     toggleMenu();
-  }
+ // }
   function animateAndGoToSection(sectionObj){
     if(sectionObj.id=="menu-blog"){
       window.open("https://blog.valeriolibera.it","_blank");

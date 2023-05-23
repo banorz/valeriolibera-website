@@ -1,6 +1,6 @@
 var corrupt_originalText = []
 var corrupt_intervals = []
-var defaultCorruptionProbability = 0.015
+var defaultCorruptionProbability = 0.035
 var minCorruption = 0.005
 var maxCorruption = 0.33
 var currentCorruptionProbability = defaultCorruptionProbability
