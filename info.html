@@ -4,48 +4,64 @@ title: pages.info
 permalink: /info/
 ---
 
-<br>
-<h2 >- topic.aboutme</h2>
-<br>
-<a href="https://www.gravatar.com/liberavalerio">
-  <img class="gravatar"  src="https://0.gravatar.com/avatar/30674cfdaf4a3f97c66ece6404c8cbb0?size=300"/>
-  <img class="gravatar"  src="https://0.gravatar.com/avatar/30674cfdaf4a3f97c66ece6404c8cbb0?size=100"/>
-  <img class="gravatar"  src="https://0.gravatar.com/avatar/30674cfdaf4a3f97c66ece6404c8cbb0?size=200"/>
-  <img class="gravatar"  src="https://0.gravatar.com/avatar/30674cfdaf4a3f97c66ece6404c8cbb0?size=50"/>
-  <img class="gravatar"  src="https://0.gravatar.com/avatar/30674cfdaf4a3f97c66ece6404c8cbb0?size=20"/></a>
-<br>
-<div class=" responsive-text terminal-blink">
-  <br>
-  {% t info.aboutme %}
-</div>
-<br>
-<h2 >- download.cv</h2>
+<div class="info-layout">
+  <!-- Left Side: Glitch Avatar & CV -->
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%;">
+    <div class="avatar-glitch-wrapper">
+      <img class="gravatar-glitch" id="glitch-avatar" src="https://0.gravatar.com/avatar/30674cfdaf4a3f97c66ece6404c8cbb0?size=300" alt="Valerio Libera Portrait">
+    </div>
+    
+    <div style="text-align: center; width: 100%;">
+      <span style="font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); display: block; margin-bottom: 8px;">
+        - download.cv
+      </span>
+      <a href='{{ "/assets/CV.pdf" | prepend: site.baseurl_root }}' target="_blank" style="display: inline-block;">
+        <img class="pdf-image" style="height: 50px; border: 1px solid var(--border-color); padding: 5px; background: #fff;" src='{{ "/assets/images/pdf.png" | prepend: site.baseurl_root }}' alt="CV PDF">
+      </a>
+    </div>
+  </div>
 
-<br>
-<a href='{{ "/assets/CV.pdf" | prepend: site.baseurl_root }}'><img class="pdf-image" src='{{ "/assets/images/pdf.png" | prepend: site.baseurl_root }}'></img> </a>
-<br>
-<br>
-<h2 >- topic.network</h2>
-<br>
-<div class="responsive-text terminal-blink">
-  {% t info.network %}
+  <!-- Right Side: Content Sections -->
+  <div class="info-content">
+    <div class="info-box">
+      <h3 style="font-size: 1.1em; margin-bottom: 10px;">- topic.aboutme</h3>
+      <div class="terminal-blink">
+        {% t info.aboutme %}
+      </div>
+    </div>
+
+    <div class="info-box">
+      <h3 style="font-size: 1.1em; margin-bottom: 10px;">- topic.network</h3>
+      <div class="terminal-blink">
+        {% t info.network %}
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-bottom: 0;">
+      <h3 style="font-size: 1.1em; margin-bottom: 10px;">collections.collaborators</h3>
+      <a href="https://www.mariolibera.com/" target="_blank" style="text-decoration: underline; font-weight: 500;">
+        Mario Libera - Illustrator, 3D Artist, Web Design, Multimedia
+      </a>
+    </div>
+  </div>
 </div>
-<br><br>
------
-<h2 class="">collections.collaborators</h2>
-<br>
-<a href="https://www.mariolibera.com/">Mario Libera - Illustrator, 3D Artist, Web Design, Multimedia</a>
-<br>
-<br><br>
+
 <script>
-  window.onload = function(){
-    window.setInterval(function(){
-      let elements = document.getElementsByClassName('gravatar')
-      for(let i = 0; i < elements.length; i++){
-        elements[i].style.display = "none";
+  // Add a cyber-glitch effect to the avatar
+  const avatar = document.getElementById('glitch-avatar');
+  if (avatar) {
+    const sizes = [100, 200, 300, 50, 400];
+    setInterval(() => {
+      // Randomly tweak the size parameter of Gravatar to simulate a pixelation/resolution glitch
+      const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+      avatar.src = `https://0.gravatar.com/avatar/30674cfdaf4a3f97c66ece6404c8cbb0?size=${randomSize}`;
+      
+      // Add a brief horizontal transformation jitter
+      if (Math.random() > 0.7) {
+        avatar.style.transform = `translateX(${Math.floor(Math.random() * 6 - 3)}px) skewX(${Math.floor(Math.random() * 10 - 5)}deg)`;
+      } else {
+        avatar.style.transform = 'none';
       }
-      let random = parseInt(Math.random()*elements.length);
-      elements[random].style.display = "block";
-    }, 300);
+    }, 400);
   }
 </script>

@@ -1,28 +1,68 @@
 <footer class="footer">
-  <div class="footer-container">
-    <span>
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img class="cc-img" alt="Licenza Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
-
-     </span>
-    <span>
-
+  <div class="diag-panel">
+    <!-- Left: Meta and Language -->
+    <div class="diag-meta">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+        <img class="cc-img" alt="Creative Commons License" src="https://i.creativecommons.org/l/by/4.0/80x15.png" />
+      </a>
+      <span>|</span>
       {% if site.lang == "en" %}
-        {% capture link_ita %}{{ site.baseurl_root }}/it{{ page.url}}{% endcapture %}
-        eng
-        <a href="{{ link_ita }}" >ita</a>
+        {% capture link_ita %}{{ site.baseurl_root }}/it{{ page.url }}{% endcapture %}
+        <strong>ENG</strong> / <a href="{{ link_ita }}">ITA</a>
       {% elsif site.lang == "it" %}
-        {% capture link_eng %}{{ site.baseurl_root }}{{ page.url  }}{% endcapture %}
-        <a href="{{ link_eng }}" >eng</a>
-        ita
+        {% capture link_eng %}{{ site.baseurl_root }}{{ page.url }}{% endcapture %}
+        <a href="{{ link_eng }}">ENG</a> / <strong>ITA</strong>
       {% endif %}
-      -
-      <a href='{{ site.baseurl }}/'>{% t pages.home %}</a>
-      <a href='{{ site.baseurl }}/counter'>{% t pages.counter %}</a>
-      <a href="{{ site.baseurl }}/contact">{% t pages.contact %}</a>
-    </span>
+    </div>
+
+    <!-- Center: System Diagnostics Stats -->
+    <div class="diag-stats">
+      <div class="diag-stat-item">SYS_STATUS: <span style="color: #00bb00; font-weight: bold;">ONLINE</span></div>
+      <div class="diag-stat-item">
+        <a href="{{ site.baseurl }}/counter/" style="color: inherit; text-decoration: none;">
+          VISITS: <span id="diag-visits" style="color: var(--text-primary); font-weight: bold; text-decoration: underline;">---</span>
+        </a>
+      </div>
+      <div class="diag-stat-item">GLITCH_PROB: <span id="diag-prob">0.0%</span></div>
+      <div class="diag-stat-item">ENGINE_MODE: <span id="diag-mode">AUTO</span></div>
+    </div>
+
+    <!-- Right: Glitch Override Controls -->
+    <div class="diag-controls">
+      <span>OVERRIDE:</span>
+      <button class="diag-btn" id="btn-chaos" onclick="setForcedMode('chaos')">[ CHAOS ]</button>
+      <button class="diag-btn" id="btn-auto" onclick="setForcedMode(null)">[ AUTO ]</button>
+      <button class="diag-btn" id="btn-order" onclick="setForcedMode('order')">[ ORDER ]</button>
+    </div>
   </div>
+
   <script>
-    corrupt_checkProbability()
-    corrupt_init()
+    corrupt_checkProbability();
+    corrupt_init();
+    
+    // Highlight active control button based on local state
+    function updateActiveButtonUI() {
+      const mode = localStorage.getItem("corrupt_forcedMode") || null;
+      document.getElementById('btn-chaos').classList.remove('active');
+      document.getElementById('btn-auto').classList.remove('active');
+      document.getElementById('btn-order').classList.remove('active');
+      
+      if (mode === 'chaos') {
+        document.getElementById('btn-chaos').classList.add('active');
+      } else if (mode === 'order') {
+        document.getElementById('btn-order').classList.add('active');
+      } else {
+        document.getElementById('btn-auto').classList.add('active');
+      }
+    }
+    
+    updateActiveButtonUI();
+    
+    // Wrap around native function to also update buttons UI
+    const originalSetForcedMode = setForcedMode;
+    setForcedMode = function(mode) {
+      originalSetForcedMode(mode);
+      updateActiveButtonUI();
+    };
   </script>
 </footer>

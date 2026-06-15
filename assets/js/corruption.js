@@ -4,7 +4,24 @@ var defaultCorruptionProbability = 0.035
 var minCorruption = 0.005
 var maxCorruption = 0.33
 var currentCorruptionProbability = defaultCorruptionProbability
+var corrupt_forcedMode = localStorage.getItem("corrupt_forcedMode") || null;
+
 function corrupt_checkProbability(callback){
+  if (corrupt_forcedMode === 'order') {
+    currentCorruptionProbability = 0.0;
+    if(callback!=null) callback();
+    corrupt_init();
+    updateDiagnosticUI();
+    return;
+  }
+  if (corrupt_forcedMode === 'chaos') {
+    currentCorruptionProbability = 0.8;
+    if(callback!=null) callback();
+    corrupt_init();
+    updateDiagnosticUI();
+    return;
+  }
+
   var dataCheck = localStorage.getItem("lastCorruptionCheck");
   if(dataCheck==null){
     corrupt_getProbability(callback)
@@ -34,7 +51,9 @@ function corrupt_checkProbability(callback){
     }
     corrupt_init()
   }
+  updateDiagnosticUI();
 }
+
 function formatDate(date) {
   var date = new Date(date);
   var hours = date.getHours();
@@ -42,6 +61,7 @@ function formatDate(date) {
   var strTime = hours + ':' + minutes;
   return (date.getMonth()+1) + "/" + date.getDate() + "/" + date.getFullYear() + "  " + strTime;
 }
+
 function corrupt_getProbability(callback){
   counterGetStats(function(result){
     var maxValue = result.max_value
@@ -56,14 +76,17 @@ function corrupt_getProbability(callback){
       callback()
     }
     corrupt_init()
+    updateDiagnosticUI();
   },function(){
     currentCorruptionProbability=defaultCorruptionProbability;
     if(callback!=null){
       callback()
     }
     corrupt_init()
+    updateDiagnosticUI();
   })
 }
+
 function corrupt_init(){
   var corrupt_elements = document.getElementsByClassName("corrupt-text")
   var corrupt_index
@@ -80,41 +103,92 @@ function corrupt_init(){
       corrupt_originalText[corrupt_index] = corrupt_element.innerHTML
   }
 }
-function corrupt_text(element,index,isDestructive,corruptionProbability){
 
-  //if(corruptionProbability == 0){
-  //  corruptionProbability=currentCorruptionProbability
-  //}
-  corruptionProbability = corrupt_clamp(currentCorruptionProbability,0.01,1)
+function corrupt_text(element,index,isDestructive,corruptionProbability){
+  if (corrupt_forcedMode === 'order') {
+    if (element.innerHTML !== corrupt_originalText[index]) {
+      element.innerHTML = corrupt_originalText[index];
+    }
+    return;
+  }
+
+  var probability = currentCorruptionProbability;
+  if (corrupt_forcedMode === 'chaos') {
+    probability = 0.8;
+  } else {
+    probability = corrupt_clamp(probability, 0.01, 1);
+  }
+
   if(!isDestructive){
     if(!(Math.random() >= 0.003)){
       element.innerHTML = corrupt_originalText[index]
     }
   }
   var text = element.innerHTML
-  if(!(Math.random() >= corruptionProbability)){
+  if(!(Math.random() >= probability)){
     var charIndex = corrupt_random(0,text.length)
     var resultText = corrupt_setCharAt(text,charIndex,String.fromCharCode(corrupt_random(0,65536)))
     element.innerHTML = resultText
   }
 }
+
 function corrupt_clamp(num, min, max) {
   return num <= min ? min : num >= max ? max : num
 }
+
 function corrupt_random(min,max){
   return Math.random() * (max - min) + min
 }
+
 function corrupt_setCharAt(str,index,chr) {
     if(index > str.length-1) return str
     return str.substr(0,index) + chr + str.substr(index+1)
 }
+
+function setForcedMode(mode) {
+  corrupt_forcedMode = mode;
+  if (mode === null) {
+    localStorage.removeItem("corrupt_forcedMode");
+  } else {
+    localStorage.setItem("corrupt_forcedMode", mode);
+  }
+  
+  if (mode === 'order') {
+    currentCorruptionProbability = 0.0;
+    // Restore all text elements instantly
+    var corrupt_elements = document.getElementsByClassName("corrupt-text");
+    for (var i = 0; i < corrupt_elements.length; i++) {
+      if (corrupt_originalText[i] !== undefined) {
+        corrupt_elements[i].innerHTML = corrupt_originalText[i];
+      }
+    }
+  } else if (mode === 'chaos') {
+    currentCorruptionProbability = 0.8;
+  }
+  
+  corrupt_init();
+  updateDiagnosticUI();
+}
+
+function updateDiagnosticUI() {
+  var probabilityEl = document.getElementById("diag-prob");
+  var modeEl = document.getElementById("diag-mode");
+  
+  if (probabilityEl) {
+    var displayProb = (currentCorruptionProbability * 100).toFixed(1) + "%";
+    probabilityEl.innerHTML = displayProb;
+  }
+  
+  if (modeEl) {
+    var displayMode = corrupt_forcedMode ? corrupt_forcedMode.toUpperCase() : "AUTO";
+    modeEl.innerHTML = displayMode;
+  }
+}
+
+// Deprecated functions kept for compatibility
 function chaos(){
-  currentCorruptionProbability=parseFloat(5);
-  localStorage.setItem("corruption",currentCorruptionProbability)
-  corrupt_init()
+  setForcedMode('chaos');
 }
 function order(){
-  currentCorruptionProbability=defaultCorruptionProbability;
-  localStorage.removeItem("corruption")
-  corrupt_checkProbability()
+  setForcedMode('order');
 }

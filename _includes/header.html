@@ -1,7 +1,27 @@
-  <div class="home-header" ><a  class="" href="{{ site.baseurl }}/">
-    {% if page.layout == 'home' %}
-      valeriolibera.it
-    {% else %}
-      <- <span class="bit-smaller corrupt-text" >valeriolibera.it{{page.url}}</span>
-    {% endif %}
-  </a></div>
+{% if page.layout == 'home' %}
+  <!-- Minimalist branding on Home page -->
+  <div class="home-header" style="margin: 20px; font-size: 0.8em; letter-spacing: 0.1em; color: var(--text-secondary); text-align: left;">
+    VALERIOLIBERA.IT // SYS_INIT_OK
+  </div>
+{% else %}
+  <!-- Persistent Command Bar on Subpages -->
+  <header class="command-bar">
+    <a href="{{ site.baseurl }}/" class="command-logo">
+      VALERIOLIBERA.IT
+    </a>
+    <nav class="command-nav">
+      <a href="{{ site.baseurl }}/info/" class="command-link {% if page.url == '/info/' %}active{% endif %}">
+        [ 01 // INFO ]
+      </a>
+      <a href="{{ site.baseurl }}/work/" class="command-link {% if page.url == '/work/' %}active{% endif %}">
+        [ 02 // WORK ]
+      </a>
+      <a href="{{ site.baseurl }}/contact/" class="command-link {% if page.url == '/contact/' %}active{% endif %}">
+        [ 03 // CONTACT ]
+      </a>
+      <a href="https://www.kloakarecords.it/" target="_blank" class="command-link">
+        [ 04 // MUSIC ]
+      </a>
+    </nav>
+  </header>
+{% endif %}

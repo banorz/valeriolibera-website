@@ -1,0 +1,4 @@
+# Local development overrides to bypass JS runtime requirement
+plugins:
+  - jekyll-multiple-languages-plugin
+  - jekyll-sitemap

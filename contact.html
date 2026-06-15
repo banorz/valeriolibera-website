@@ -3,61 +3,105 @@ layout: default
 title: pages.contact
 permalink: /contact/
 ---
-<div>
+
 <script>
   function send(){
     var yourname = document.getElementById("name").value;
     var yournum = document.getElementById("tel").value;
     var yourmail = document.getElementById("mail").value;
     var yourmessage = document.getElementById("body").value;
-    var subject = "INFO - "+yourmail;
-    var body = encodeURIComponent(yourmessage+"\n\n"+yourname+"\n"+yournum+"\n"+yourmail)
-    //Temporary, will be upgraded
-    window.open('mailto:info@valeriolibera.it?subject='+subject+'&body='+body);
+    var subject = "INFO - " + yourmail;
+    var body = encodeURIComponent(yourmessage + "\n\n" + yourname + "\n" + yournum + "\n" + yourmail);
+    window.open('mailto:info@valeriolibera.it?subject=' + subject + '&body=' + body);
   }
 </script>
-<br>
 
-<div class="terminal-blink">{% t contact.email %}</div>
-<div class="contact-form">
-<input class="contact-field"  id="name"  placeholder="Mario Rossi" type="text"></input> <label for="name"> {% t contact.yourname %} </label><br>
-  <input class="contact-field" id="tel"  placeholder="+39 33333333" type="tel"></input><label for="tel"> {% t contact.yournumber %} </label><br>
-  <input class="contact-field"  id="mail" placeholder="mail@mail.com" type="email"></input><label for="mail"> {% t contact.yourmail %} </label><br>
-  <textarea id="body" rows="7" placeholder="{% t contact.emailmessage %}" ></textarea>
-</div>
-<button onclick="send()">{% t contact.send %}</button>
-<br><br>
-<div class="terminal-blink">{% t contact.other %}</div>
-<br>
-<div style="">
-  <div class="contact">
-    <img class="icon-contact" src='{{ "/assets/images/ic_phone.png" | prepend: site.baseurl_root }}'></img> <a href="tel:+393456024345">+39 3456024345</a><br>
+<div class="contact-layout">
+  <!-- Left Side: Styled Tech Form -->
+  <div class="contact-form-box">
+    <h3 style="font-size: 1.1em; margin-bottom: 20px;">[ SEND_MESSAGE ]</h3>
+    
+    <div class="form-group">
+      <label for="name">{% t contact.yourname %}</label>
+      <input class="contact-field" id="name" placeholder="Mario Rossi" type="text">
+    </div>
+    
+    <div class="form-group">
+      <label for="tel">{% t contact.yournumber %}</label>
+      <input class="contact-field" id="tel" placeholder="+39 33333333" type="tel">
+    </div>
+    
+    <div class="form-group">
+      <label for="mail">{% t contact.yourmail %}</label>
+      <input class="contact-field" id="mail" placeholder="mail@mail.com" type="email">
+    </div>
+    
+    <div class="form-group">
+      <label for="body">{% t contact.message %}</label>
+      <textarea id="body" rows="6" placeholder="{% t contact.emailmessage %}"></textarea>
+    </div>
+    
+    <button class="contact-btn" onclick="send()">{% t contact.send %}</button>
   </div>
-  <div class="contact">
-    <img class="icon-contact" src='{{ "/assets/images/ic_mail.png" | prepend: site.baseurl_root }}'></img> <a href="mailto:mail@valeriolibera.it">mail@valeriolibera.it</a><br>
-  </div>
-  <div class="contact">
-    <img class="icon-contact" src='{{ "/assets/images/ic_location.png" | prepend: site.baseurl_root }}'></img> <a href="https://goo.gl/maps/GSq4q6aMy69rGMCh8">Via Eurialo, 8 - 00181 - Roma</a>
-  </div>
-  <br>
-  <div class="social-contacts">
-    <span>
-      <a href="https://facebook.com/{{ site.facebook_pagename }}"> <img class="icon-social" src='{{ "/assets/images/facebook.png" | prepend: site.baseurl_root }}'></img> </a>
-      <a href="https://twitter.com/{{ site.twitter_pagename }}"> <img class="icon-social" src='{{ "/assets/images/twitter.png" | prepend: site.baseurl_root }}'></img> </a>
-      <a href="https://linkedin.com/in/{{ site.linkedin_pagename }}"> <img class="icon-social" src='{{ "/assets/images/linkedin.png" | prepend: site.baseurl_root }}'></img> </a>
-      <a href="https://github.com/{{ site.github_pagename }}"> <img class="icon-social" src='{{ "/assets/images/github.png" | prepend: site.baseurl_root }}'></img> </a>
-    </span>
-  </div>
-  <br>
-  <div class="terminal-blink">{% t contact.dm %}</div>
-  <input disabled placeholder="{% t contact.shortmessage %}" type="text"></input>
-  <br>
-  <button disabled >{% t contact.send %}</button>   {% t global.workinprogress %}
-  <br>
-</div>
-<br>
 
+  <!-- Right Side: Details & Coordinates -->
+  <div class="contact-details">
+    <div class="info-box" style="margin-bottom: 0;">
+      <h3 style="font-size: 1.1em; margin-bottom: 20px;">[ COORDINATES ]</h3>
+      
+      <div style="display: flex; flex-direction: column; gap: 15px;">
+        <div class="contact-item">
+          <img class="icon-contact" src='{{ "/assets/images/ic_phone.png" | prepend: site.baseurl_root }}' alt="Phone">
+          <a href="tel:+393456024345">+39 3456024345</a>
+        </div>
+        
+        <div class="contact-item">
+          <img class="icon-contact" src='{{ "/assets/images/ic_mail.png" | prepend: site.baseurl_root }}' alt="Email">
+          <a href="mailto:contact@valeriolibera.it">contact@valeriolibera.it</a>
+        </div>
+        
+        <div class="contact-item">
+          <img class="icon-contact" src='{{ "/assets/images/ic_location.png" | prepend: site.baseurl_root }}' alt="Location">
+          <a href="https://maps.app.goo.gl/LkPqkbTVvy7KBYYe8" target="_blank">00181 - Roma - Furio Camillo</a>
+        </div>
+      </div>
 
-<div class="contact-footer">
-{% t contact.footer %}
+      <div style="border-top: 1px solid var(--border-muted); margin-top: 25px; padding-top: 20px;">
+        <span style="font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); display: block; margin-bottom: 12px;">
+          - network.presence
+        </span>
+        <div class="social-links">
+          <a href="https://facebook.com/{{ site.facebook_pagename }}" target="_blank">
+            <img class="icon-social" src='{{ "/assets/images/facebook.png" | prepend: site.baseurl_root }}' alt="Facebook">
+          </a>
+          <a href="https://twitter.com/{{ site.twitter_pagename }}" target="_blank">
+            <img class="icon-social" src='{{ "/assets/images/twitter.png" | prepend: site.baseurl_root }}' alt="Twitter">
+          </a>
+          <a href="https://linkedin.com/in/{{ site.linkedin_pagename }}" target="_blank">
+            <img class="icon-social" src='{{ "/assets/images/linkedin.png" | prepend: site.baseurl_root }}' alt="LinkedIn">
+          </a>
+          <a href="https://github.com/{{ site.github_pagename }}" target="_blank">
+            <img class="icon-social" src='{{ "/assets/images/github.png" | prepend: site.baseurl_root }}' alt="GitHub">
+          </a>
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--border-muted); margin-top: 25px; padding-top: 20px;">
+        <span style="font-size: 0.8em; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); display: block; margin-bottom: 10px;">
+          {% t contact.dm %}
+        </span>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <input class="contact-field" style="margin-top: 0; padding: 6px 10px; font-size: 0.85em;" disabled placeholder="{% t contact.shortmessage %}" type="text">
+          <button class="contact-btn" style="padding: 6px 15px; font-size: 0.8em;" disabled>{% t contact.send %}</button>
+        </div>
+        <span style="font-size: 0.75em; color: var(--text-secondary); display: block; margin-top: 5px;">
+          {% t global.workinprogress %}
+        </span>
+      </div>
+    </div>
+    
+    <div class="contact-footer" style="padding-left: 10px; line-height: 1.6; color: var(--text-secondary);">
+      {% t contact.footer %}
+    </div>
+  </div>
 </div>

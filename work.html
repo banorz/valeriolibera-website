@@ -3,23 +3,49 @@ layout: default
 title: pages.work
 permalink: /work/
 ---
-<br>
-<h2 >- topic.technologies</h2>
-<br>
-<div class="terminal-blink responsive-text">
-  Kotlin, ObjC, Swift, php, sql, html, C++, C#,
- Unity 3D, CMS, Networking, Corona, Python, LATEX, REST, KRPano, UML, iOS , JavaScript, Ajax<br><br>
-  {% t work.specialized %}: Java, Android SDK, Windows .NET Framework, C/Unix,
-  Virtual Reality, Augmented Reality, Mobile Development, Web Development
-</div>
-<br>
-<br>
-<h2 >- collection.works</h2>
-<br>
-{% include works.html %}
-{% t work.cv %} <a href='{{ "/assets/CV.pdf" | prepend: site.baseurl_root }}'>CV</a>
-<br><br>
-<br>
 
-<br>
-<br>
+<!-- Technologies Stack Section -->
+<div class="tech-section">
+  <h3 style="font-size: 1.1em; margin-bottom: 5px;">- topic.technologies</h3>
+  <div class="tech-grid">
+    <span class="tech-tag specialized">Java</span>
+    <span class="tech-tag specialized">Android SDK</span>
+    <span class="tech-tag specialized">Windows .NET</span>
+    <span class="tech-tag specialized">C/Unix</span>
+    <span class="tech-tag specialized">Virtual Reality</span>
+    <span class="tech-tag specialized">Augmented Reality</span>
+    <span class="tech-tag specialized">Mobile Development</span>
+    <span class="tech-tag specialized">Web Development</span>
+    
+    <span class="tech-tag">Kotlin</span>
+    <span class="tech-tag">ObjC</span>
+    <span class="tech-tag">Swift</span>
+    <span class="tech-tag">PHP</span>
+    <span class="tech-tag">SQL</span>
+    <span class="tech-tag">HTML/CSS</span>
+    <span class="tech-tag">C++</span>
+    <span class="tech-tag">C#</span>
+    <span class="tech-tag">Unity 3D</span>
+    <span class="tech-tag">CMS</span>
+    <span class="tech-tag">Networking</span>
+    <span class="tech-tag">Corona SDK</span>
+    <span class="tech-tag">Python</span>
+    <span class="tech-tag">LaTeX</span>
+    <span class="tech-tag">REST APIs</span>
+    <span class="tech-tag">KRPano</span>
+    <span class="tech-tag">UML</span>
+    <span class="tech-tag">iOS</span>
+    <span class="tech-tag">JavaScript</span>
+    <span class="tech-tag">Ajax</span>
+  </div>
+</div>
+
+<!-- Portfolio Grid Section -->
+<div style="margin-bottom: 40px;">
+  <h3 style="font-size: 1.1em; margin-bottom: 10px;">- collection.works</h3>
+  {% include works.html %}
+</div>
+
+<div class="terminal-blink" style="font-size: 0.9em; color: var(--text-secondary);">
+  {% t work.cv %} <a href='{{ "/assets/CV.pdf" | prepend: site.baseurl_root }}' target="_blank" style="text-decoration: underline; font-weight: 500;">CV</a>
+</div>
